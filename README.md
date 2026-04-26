@@ -1,42 +1,60 @@
-# Sovereign AI Content Agency
+# Sovereign AI Factory: Industrial Multi-Agent Systems
 
-A production-grade, multi-agent AI system designed for high-performance content research, generation, and auditing. This repository tracks the journey from prompt engineering to local fine-tuning on Apple Silicon.
-
-## 🗂️ Repository Structure
-
-```text
-├── crewAI/             # Multi-agent orchestration (CrewAI)
-│   ├── chapter1/       # Base 3-agent crew (Researcher, Copywriter, Editor)
-│   └── chapter2/       # Resilient 4-agent crew (+ Accuracy Auditor)
-├── graph/              # Graph-based workflows (LangGraph)
-├── evals/              # TruLens v1.0 Evaluation suite
-├── finetune/           # Fine-tuning & Distillation pipeline
-│   ├── data/           # Gold Standard training datasets
-│   ├── mlx/            # MLX Adapters for Apple Silicon
-│   └── scripts/        # Distillation, Cleaning, and LoRA scripts
-└── SOVEREIGN_AI_JOURNEY.md  # Master technical documentation
-```
-
-## 🚀 Quick Start
-
-### 1. Run the Multi-Agent Agency
-```bash
-python crewAI/chapter2/src/main.py
-```
-
-### 2. Run Evaluations (TruLens)
-```bash
-python evals/chapter2/src/trulens_agency_v2.py
-```
-
-### 3. Local Fine-Tuning (M3 Max)
-```bash
-./finetune/run_mlx_training.sh
-```
-
-## 📖 The Journey
-For a deep dive into the architecture, metrics, and fine-tuning results, see the [Sovereign AI Journey](SOVEREIGN_AI_JOURNEY.md).
+A high-performance, local-first AI engineering portfolio demonstrating the evolution of autonomous agents, multi-metric evaluation, and knowledge distillation via local fine-tuning on Apple Silicon (M3 Max).
 
 ---
-**Maintained by**: Anteneh Tessema
-**License**: MIT
+
+## 🏗️ Architecture Overview
+
+```mermaid
+graph TD
+    User([User Request]) --> Router{Router Agent}
+    Router -->|Simple Task| FT_Model[Fine-Tuned Llama-3.2-1B]
+    Router -->|Complex Task| Agent_Crew[Multi-Agent Crew]
+    
+    subgraph "Agentic RAG Layer"
+        Agent_Crew -->|Query| VectorDB[(Local ChromaDB)]
+        VectorDB -->|Context| Agent_Crew
+    end
+    
+    subgraph "Audit Layer"
+        Agent_Crew -->|Draft| TruLens[TruLens Eval]
+        TruLens -->|Groundedness Check| Auditor[Accuracy Auditor]
+    end
+    
+    Auditor -->|Verified Content| User
+```
+
+## 🛠️ Engineering Labs
+
+### [Lab 01: Orchestration](labs/01-orchestration/)
+Implementation of specialized multi-agent systems using **CrewAI** and **LangGraph**. Focus on role-based reasoning and inter-agent communication.
+
+### [Lab 02: Auditing & Governance](labs/02-auditing/)
+Operationalizing trust. Integration of **TruLens v1.0** for multi-metric evaluation:
+- **Groundedness**: Cross-referencing claims against source research.
+- **Safety**: Harmfulness and maliciousness detection.
+- **Relevance**: Dynamic feedback loops for output optimization.
+
+### [Lab 03: Knowledge Distillation](labs/03-distillation/)
+Pipeline for extracting "Gold Standard" datasets from successful agent runs. Includes automated data scrubbing and sanitization of LLM tool-hallucinations.
+
+### [Lab 04: Local Fine-Tuning (MLX)](labs/04-finetuning/)
+PEFT (Parameter-Efficient Fine-Tuning) using **LoRA** on Apple Silicon. 
+- **Hardware**: Optimized for M3 Max Unified Memory.
+- **Framework**: MLX-LM.
+- **Result**: 135+ tokens/sec on a specialized 1.2B parameter "Agency" model.
+
+### [Lab 05: Agentic RAG & Memory](labs/05-agentic-rag/)
+Development of autonomous retrieval strategies. Agents move beyond simple search to "multi-hop" reasoning across local vector databases (ChromaDB) and private document stores.
+
+---
+
+## 🚀 Deployment Standards
+- **Model Formats**: GGUF, MLX Adapters.
+- **Environment**: Containerized local execution with **Ollama**.
+- **Observability**: OpenTelemetry-based tracing (TruLens).
+
+---
+**Lead Engineer**: Anteneh Tessema  
+**Focus**: Sovereign AI, Local-First Infrastructure, Multi-Agent Autonomy.
