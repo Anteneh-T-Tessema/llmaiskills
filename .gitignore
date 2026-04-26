@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.env
+
+# Databases
+*.sqlite
+*.sqlite-journal
+
+# ML / Fine-Tuning
+agency_mlx_adapter/
+mlx_data/
+agency_distilled.jsonl
+# agency_cleaned.jsonl # Keep this as an example
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

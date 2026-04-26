@@ -1,0 +1,19 @@
+{
+    "mcpServers": {
+        "market-intelligence": {
+            "command": "/usr/local/bin/python3.12",
+            "args": ["mcp/chapter5/nodes/market_node.py"],
+            "env": {
+                "NODE_ENV": "production",
+                "LOG_LEVEL": "INFO"
+            }
+        },
+        "file-operations": {
+            "command": "/usr/local/bin/python3.12",
+            "args": ["mcp/chapter5/nodes/file_node.py"],
+            "env": {
+                "SAFE_MODE": "true"
+            }
+        }
+    }
+}

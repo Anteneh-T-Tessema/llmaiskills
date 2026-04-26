@@ -1,0 +1,4 @@
+crewai
+langchain-ollama
+python-dotenv
+duckduckgo-search

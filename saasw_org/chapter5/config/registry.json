@@ -1,0 +1,41 @@
+{
+    "mcpServers": {
+        "market-intelligence": {
+            "command": "/usr/local/bin/python3.12",
+            "args": [
+                "saasw_org/chapter5/nodes/market_node.py"
+            ],
+            "env": {
+                "NODE_ENV": "production",
+                "LOG_LEVEL": "INFO"
+            }
+        },
+        "file-operations": {
+            "command": "/usr/local/bin/python3.12",
+            "args": [
+                "saasw_org/chapter5/nodes/file_node.py"
+            ],
+            "env": {
+                "SAFE_MODE": "true"
+            }
+        },
+        "carbon-footprin": {
+            "command": "/usr/local/bin/python3.12",
+            "args": [
+                "saasw_org/chapter5/nodes/generated_node.py"
+            ],
+            "env": {
+                "GENERATED_BY": "AutoGen-Evolution-Loop"
+            }
+        },
+        "viral-video-scr": {
+            "command": "/usr/local/bin/python3.12",
+            "args": [
+                "saasw_org/chapter5/nodes/generated_node.py"
+            ],
+            "env": {
+                "GENERATED_BY": "AutoGen-Evolution-Loop"
+            }
+        }
+    }
+}
